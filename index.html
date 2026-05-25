@@ -1,0 +1,1059 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+/>
+
+<title>VORUEM</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+    background:#000;
+    font-family:'Montserrat',sans-serif;
+    color:#fff;
+}
+
+body{
+    background:
+    radial-gradient(circle at 18% 18%, rgb(88 61 7 / 18%), transparent 30%), radial-gradient(circle at 85% 42%, rgba(255, 87, 87, .10), transparent 34%), radial-gradient(circle at 50% 100%, rgba(38, 227, 111, .10), transparent 40%), linear-gradient(180deg, #050403 0%, #120d08 48%, #070605 100%);
+}
+
+/* Основной контейнер — максимальная ширина 480px */
+.app{
+    width:100%;
+    max-width:480px;
+    margin:auto;
+    padding:0px;
+    min-height:100vh;
+}
+
+/* TOP */
+
+.stats{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0px;
+    padding: 8px;
+    margin: 6px 14px 14px 14px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #21140b, #090502);
+    border: 1px solid rgba(255, 170, 0, .16);
+    box-shadow: 0 0 15px rgba(255, 136, 0, .10), inset 0 0 20px rgba(255, 166, 0, .04);
+    margin-bottom: 12px;
+}
+
+.stat{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:14px;
+    font-weight:700;
+}
+
+.light{
+    opacity:.7;
+    font-weight:500;
+    font-size: 12px;
+}
+
+.red-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4b4b;
+    box-shadow: 0 0 8px #ff4b4b;
+    animation: pulse 1.2s infinite;
+}
+
+.green{
+    color:#2cff73;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(1.45);
+        opacity:.45;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+/* Разделитель между статистиками */
+.divider {
+    width: 1px;
+    height: 20px !important;
+    background: linear-gradient(180deg, transparent, rgba(255, 215, 128, .36), transparent);
+}
+
+/* TICKER */
+
+.ticker{
+    overflow:hidden;
+    margin-bottom:12px;
+}
+
+.ticker-track{
+    display:flex;
+    gap:12px;
+    width:max-content;
+
+    animation:ticker 45s linear infinite;
+}
+
+.win-box{
+
+  min-width: 140px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #281d11, #120d08);
+    border: 1px solid rgba(255, 179, 0, .12);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.green-dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2cff73;
+    box-shadow: 0 0 8px #2cff73;
+}
+
+@keyframes ticker{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+
+/* PROMO */
+
+.promo{
+
+   display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+    padding: 8px 10px;
+    margin: 0px 14px;
+    border-radius: 26px;
+    background: radial-gradient(circle at center, #013c14 0%, #001307 100%);
+    border: 2px solid rgba(0, 255, 106, .24);
+    box-shadow: 0 0 30px rgba(0, 255, 94, .12), inset 0 0 30px rgba(0, 255, 94, .05);
+    margin-bottom: 14px;
+}
+
+.promo-left{
+    display:flex;
+    align-items:center;
+    
+}
+
+.gift{
+
+   width: 40px;
+    height: 40px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 6px
+}
+
+.promo-title{
+   font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.promo-bonus{
+   font-size: 20px;
+    line-height: 1;
+    font-weight: 700;
+    color: #22ff73;
+}
+
+.promo-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.info{
+   width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #f3d38c;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.copy-promo-btn{
+
+    min-width: 80px;
+    height: 36px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #1df36d, #30d56e);
+    border: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* GAMES */
+
+.games{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin: 14px;
+    margin-bottom: 80px;
+
+}
+
+.card{
+
+    position:relative;
+
+    padding:14px;
+
+    border-radius:28px;
+
+    background:
+    linear-gradient(180deg, #3f2d1fd9, #160b04d4);
+
+    border:1px solid rgba(255,183,0,.18);
+
+    box-shadow:
+    0 0 20px rgba(255,162,0,.10),
+    inset 0 0 24px rgba(255,162,0,.04);
+}
+
+.badge{
+
+   position: absolute;
+    top: 7px;
+    right: 7px;
+    padding: 4px 6px;
+    border-radius: 16px;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.hot{
+    background:#ffd84d;
+    color:#000;
+    box-shadow: 0 0 10px #ffd84d78;
+}
+
+.new{
+    background:#4be4ff;
+    color:#000;
+    box-shadow: 0 0 10px #3eeaff91;
+}
+
+.vip{
+    background:#ffe36d;
+    color:#000;
+    box-shadow: 0 0 10px #ffe36d94;
+}
+
+.top{
+    background:#ff4b4b;
+    box-shadow: 0 0 10px #ff4b4b85;
+}
+
+.game-image{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:18px;
+    overflow:hidden;
+    margin-bottom:14px;
+}
+
+.game-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.game-title{
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    margin-bottom: 12px;
+    color: #fff6dd;
+}
+
+.play-btn{
+
+    width: 100%;
+    height: 36px;
+    border: none;
+    outline: none;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffe18c, #f0ae38);
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    /* Анимация пульсации (дыхание) */
+    animation: playPulse 2.5s infinite ease-in-out;
+}
+
+/* Анимация блика для кнопок PLAY */
+.play-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes playPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+/* JACKPOT */
+
+.jackpot{
+
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -200px;
+    width: 92%;
+    max-width: 450px;
+    padding: 8px 8px;
+    border-radius: 28px;
+    background: linear-gradient(90deg, #45141c, #2c160b);
+    border: 2px solid rgba(255, 90, 115, .45);
+    box-shadow: 0 0 35px rgba(255, 90, 115, .18);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: .55s;
+    z-index: 9999;
+    opacity: 97%;
+}
+
+.jackpot.show{
+    bottom:18px;
+}
+
+.flag{
+
+        width: 40px;
+    height: 40px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.jackpot small{
+    font-size:12px;
+    opacity:.85;
+}
+
+.jackpot h2{
+    margin-top: 0px;
+    font-size: 16px;
+    color: #ff7187;
+}
+
+/* Верхняя панель с промокодом (слайд сверху) */
+.top-notification{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-120%);
+    width: 92%;
+    max-width: 430px;
+    z-index: 99999;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.top-notification.show{
+    transform: translateX(-50%) translateY(10px);
+    pointer-events: auto;
+}
+
+.notification-inner{
+    border-radius: 34px;
+    padding: 16px 14px;
+    background: radial-gradient(circle at top, #29170d 0%, #080402 100%);
+    border: 2px solid rgba(255,196,0,.18);
+    box-shadow: 0 0 40px rgba(255,170,0,.12), inset 0 0 30px rgba(255,170,0,.05);
+    position: relative;
+    opacity: 98%;
+}
+
+.notif-close{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.notif-top{
+    display: flex;
+    gap: 14px;
+}
+
+.notif-gift{
+   width: 72px;
+    height: 56px;
+    min-width: 56px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.notif-title{
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.notif-text{
+    font-size: 14px;
+    line-height: 1.2;
+    opacity: .92;
+}
+
+.promo-copy{
+
+    margin-top: 26px;
+    border-radius: 20px;
+    padding: 12px 18px;
+    background: radial-gradient(circle at center, #013d15 0%, #001307 100%);
+    border: 2px solid rgba(0, 255, 98, .22);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+}
+
+.copy-left small{
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0px;
+    opacity: .75;
+    margin-bottom: 0px;
+}
+
+.copy-left h2{
+    color: #22ff73;
+    font-size: 20px;
+    letter-spacing: 0px;
+}
+
+.copy-btn{
+
+    border: none;
+    min-width: 106px;
+    height: 38px;
+    border-radius: 22px;
+    background: #1df36d;
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+/* Стили для карточки телеграм-канала */
+.card-wide {
+    grid-column: span 2;
+}
+
+.card-wide .game-image {
+    aspect-ratio: 2 / 1;
+}
+
+.badge-tg {
+    background: #1da1f2;
+    color: #fff;
+    box-shadow: 0 0 10px #1da1f280;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px 8px;
+    font-size: 10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- TOP -->
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="red-dot"></div>
+
+            <div>
+                <span id="online">3114</span>
+                <span class="light"> playing now</span>
+            </div>
+
+        </div>
+
+        <span class="divider"></span>
+
+        <div class="stat">
+
+            <span class="green">
+                +<span id="wins">128</span>
+            </span>
+
+            <span class="light"> won last hour</span>
+
+        </div>
+
+    </div>
+
+    <!-- TICKER -->
+
+    <div class="ticker">
+        <div class="ticker-track" id="ticker"></div>
+    </div>
+
+    <!-- PROMO -->
+
+    <div class="promo">
+
+        <div class="promo-left">
+
+            <div class="gift">🎁</div>
+
+            <div>
+
+                <div class="promo-title">
+                    promo: VORUEM
+                </div>
+
+                <div class="promo-bonus">
+                    +500% & 500FS
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="promo-right">
+
+            <div class="info" id="openNotification">
+                i
+            </div>
+
+            <button class="copy-promo-btn" id="promoCopyBtn">
+                Copy
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- GAMES -->
+
+    <div class="games">
+
+        <div class="card">
+
+            <div class="badge hot">TOP</div>
+
+           <div class="game-image">
+    <img src="game-1.gif">
+</div>
+
+            <div class="game-title">
+                TOWER RUSH
+            </div>
+
+            <button
+            class="play-btn"
+            onclick="window.location.href='https://google.com'">
+                ▶ PLAY
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <div class="badge new">NEW</div>
+
+            <div class="game-image">
+                <img src="game-2.gif">
+            </div>
+
+            <div class="game-title">
+                PUNCH IT
+            </div>
+
+            <button
+            class="play-btn"
+            onclick="window.location.href='https://google.com'">
+                ▶ PLAY
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <div class="badge vip">VIP</div>
+
+            <div class="game-image">
+                <img src="game-3.gif">
+            </div>
+
+            <div class="game-title">
+                TAPPY BIRD
+            </div>
+
+            <button
+            class="play-btn"
+            onclick="window.location.href='https://google.com'">
+                ▶ PLAY
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <div class="badge top">HOT</div>
+
+            <div class="game-image">
+                 <img src="game-4.gif">
+            </div>
+
+            <div class="game-title">
+                ONLY MATCH
+            </div>
+
+             <button
+            class="play-btn"
+            onclick="window.location.href='https://google.com'">
+                ▶ PLAY
+            </button>
+
+        </div>
+
+        <!-- Новая карточка Telegram -->
+        <div class="card card-wide">
+
+            <div class="badge badge-tg">BONUS</div>
+
+            <div class="game-image">
+                <img src="tg.png" alt="Telegram">
+            </div>
+
+            <div class="game-title">
+                TELEGRAM CHANNEL
+            </div>
+
+            <button
+            class="play-btn"
+            onclick="window.location.href='https://t.me/your_channel'">
+                ПОДПИСАТЬСЯ
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JACKPOT -->
+
+<div class="jackpot" id="jackpot">
+
+    <div class="flag" id="flag">
+        🇫🇷
+    </div>
+
+    <div>
+
+        <small id="jackpotId">
+            ID: 428***
+        </small>
+
+        <h2 id="jackpotText">
+            JACKPOT +$7,103
+        </h2>
+
+    </div>
+
+</div>
+
+<!-- Верхняя панель с промокодом (появляется по клику на "i") -->
+
+<div class="top-notification" id="topNotification">
+
+    <div class="notification-inner">
+
+        <div class="notif-close" id="closeNotification">
+            ×
+        </div>
+
+        <div class="notif-top">
+
+            <div class="notif-gift">
+                🎁
+            </div>
+
+            <div>
+
+                <div class="notif-title">
+                    Заберите бонус
+                </div>
+
+                <div class="notif-text">
+                    Зарегистрируйтесь сейчас и получите бонус 500% и 500FS, используя этот промокод.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="promo-copy">
+
+            <div class="copy-left">
+
+                <small>PROMOCODE</small>
+
+                <h2 id="topPromoCode">
+                    VORUEM
+                </h2>
+
+            </div>
+
+            <button class="copy-btn" id="topCopyBtn">
+                Copy
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ONLINE */
+
+let online = 3114;
+
+setInterval(()=>{
+
+    online += Math.floor(Math.random()*11)-5;
+
+    if(online < 2800) online = 2800;
+    if(online > 3400) online = 3400;
+
+    document.getElementById('online').innerText = online;
+
+},2500);
+
+/* WINS — теперь начинается со случайного числа 122–137 и увеличивается на 1 каждые 2–5 секунд */
+
+let wins = Math.floor(Math.random() * (137 - 122 + 1)) + 122;
+document.getElementById('wins').innerText = wins;
+
+function scheduleWinsUpdate() {
+    const delay = Math.floor(Math.random() * 3000) + 2000; // 2000–5000 мс
+    setTimeout(() => {
+        wins += 1;
+        document.getElementById('wins').innerText = wins;
+        scheduleWinsUpdate(); // планируем следующий шаг
+    }, delay);
+}
+scheduleWinsUpdate();
+
+/* TICKER — выигрыши от 151 до 793 */
+
+const ticker = document.getElementById('ticker');
+
+function tickerItem(){
+
+    const id =
+    Math.floor(Math.random()*900)+100;
+
+    const amount =
+    Math.floor(Math.random() * (793 - 151 + 1)) + 151;
+
+    return `
+    <div class="win-box">
+
+        <div class="green-dot"></div>
+
+        <div>
+            ID: ${id}***
+        </div>
+
+        <div class="green">
+            +$${amount}
+        </div>
+
+    </div>
+    `;
+}
+
+let tickerHtml = '';
+
+for(let i=0;i<20;i++){
+    tickerHtml += tickerItem();
+}
+
+ticker.innerHTML = tickerHtml + tickerHtml;
+
+/* JACKPOT */
+
+const jackpot = document.getElementById('jackpot');
+
+const flags = [
+'🇷🇺',
+'🇮🇳',
+'🇺🇿',
+'🇺🇦',
+'🇰🇬',
+'🇹🇯',
+'🇦🇿',
+'🇦🇲',
+'🇲🇩',
+'🇧🇾',
+'🇹🇷',
+'🇲🇽',
+'🇨🇱',
+'🇦🇷',
+'🇻🇪',
+'🇨🇴',
+'🇪🇨',
+'🇨🇷',
+'🇧🇷',
+'🇮🇩',
+'🇧🇩',
+'🇹🇭',
+'🇰🇭',
+'🇱🇰',
+'🇵🇰',
+'🇲🇾',
+'🇵🇭',
+'🇰🇷',
+'🇯🇵',
+'🇨🇦',
+'🇻🇳',
+'🇶🇦',
+'🇦🇪',
+'🇧🇴',
+'🇬🇹',
+'🇳🇪',
+'🇬🇲',
+'🇹🇳',
+'🇪🇹',
+'🇪🇸'
+];
+
+function showJackpot(){
+
+    const id =
+    Math.floor(Math.random()*900)+100;
+
+    const amount =
+    (
+        Math.floor(Math.random()*9000)+500
+    ).toLocaleString();
+
+    const flag =
+    flags[
+        Math.floor(Math.random()*flags.length)
+    ];
+
+    document.getElementById('flag').innerText =
+    flag;
+
+    document.getElementById('jackpotId').innerText =
+    `ID: ${id}***`;
+
+    document.getElementById('jackpotText').innerText =
+    `JACKPOT +$${amount}`;
+
+    jackpot.classList.add('show');
+
+    // Автоматически скрываем через 5 секунд
+    setTimeout(()=>{
+        jackpot.classList.remove('show');
+    },5000);
+
+}
+
+let jackpotTimer = null;
+
+function scheduleNextJackpot() {
+    // Очищаем предыдущий таймер на всякий случай
+    if (jackpotTimer) clearTimeout(jackpotTimer);
+    
+    // Случайный интервал от 11 до 17 секунд
+    const next = Math.floor(Math.random() * 6000) + 11000;
+    
+    jackpotTimer = setTimeout(() => {
+        showJackpot();
+        // После показа планируем следующий
+        scheduleNextJackpot();
+    }, next);
+}
+
+// Запускаем первый джекпот через 11–17 секунд после загрузки
+scheduleNextJackpot();
+
+/* ВЕРХНЯЯ ПАНЕЛЬ С ПРОМОКОДОМ (слайд сверху) */
+
+const topNotification = document.getElementById('topNotification');
+const promoCode = 'VORUEM';
+
+function showNotification() {
+    // Не показываем повторно, если уже открыто
+    if (topNotification.classList.contains('show')) return;
+    topNotification.classList.add('show');
+    // автоскрытие убрано — теперь окно остаётся, пока не закроют крестиком
+}
+
+function hideNotification() {
+    topNotification.classList.remove('show');
+}
+
+// Открытие по клику на "i"
+document.getElementById('openNotification').addEventListener('click', showNotification);
+// Закрытие по крестику
+document.getElementById('closeNotification').addEventListener('click', hideNotification);
+
+// Автоматический показ через 5 секунды после загрузки
+setTimeout(showNotification, 5000);
+
+// Копирование из кнопки в promo-right (рядом с i)
+document.getElementById('promoCopyBtn').addEventListener('click', async function() {
+    try {
+        await navigator.clipboard.writeText(promoCode);
+        const btn = this;
+        btn.textContent = 'Copied';
+        setTimeout(() => {
+            btn.textContent = 'Copy';
+        }, 1500);
+    } catch (err) {
+        // fallback
+        alert('Скопируйте вручную: ' + promoCode);
+    }
+});
+
+// Копирование из верхней панели
+document.getElementById('topCopyBtn').addEventListener('click', async function() {
+    try {
+        await navigator.clipboard.writeText(promoCode);
+        const btn = this;
+        btn.textContent = 'Copied';
+        setTimeout(() => {
+            btn.textContent = 'Copy';
+        }, 1500);
+    } catch (err) {
+        alert('Скопируйте вручную: ' + promoCode);
+    }
+});
+
+</script>
+
+</body>
+</html>
