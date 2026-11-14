@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 
@@ -9,7 +9,7 @@ name="viewport"
 content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 />
 
-<title>VORUEM</title>
+<title>Trade Session</title>
 
 <style>
 
@@ -26,17 +26,20 @@ html,
 body{
     width:100%;
     overflow-x:hidden;
-    background:#000;
+    background:#080b10;
     font-family:'Montserrat',sans-serif;
-    color:#fff;
+    color:#e6edf3;
 }
 
 body{
     background:
-   radial-gradient(circle at 18% 18%, rgb(88 61 7 / 18%), transparent 30%), radial-gradient(circle at 85% 42%, rgba(255, 87, 87, .10), transparent 34%), radial-gradient(circle at 50% 100%, rgba(38, 227, 111, .10), transparent 40%), linear-gradient(180deg, #050403 0%, #020903 48%, #070605 100%);
+        radial-gradient(circle at 15% -5%, rgba(47,124,255,.16), transparent 42%),
+        radial-gradient(circle at 88% 32%, rgba(0,214,143,.09), transparent 40%),
+        radial-gradient(circle at 50% 105%, rgba(47,124,255,.10), transparent 45%),
+        linear-gradient(180deg, #0a0e14 0%, #0c1219 48%, #070a0f 100%);
+    background-attachment: fixed;
 }
 
-/* Основной контейнер — максимальная ширина 480px */
 .app{
     width:100%;
     max-width:480px;
@@ -48,72 +51,59 @@ body{
 /* TOP */
 
 .stats{
-
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     gap: 0px;
-    padding: 8px;
-    margin: 6px 14px 14px 14px;
-    border-radius: 24px;
-    background: linear-gradient(180deg, #21140b, #090502);
-    border: 1px solid rgba(255, 170, 0, .16);
-    box-shadow: 0 0 15px rgba(255, 136, 0, .10), inset 0 0 20px rgba(255, 166, 0, .04);
-    margin-bottom: 10px;
+    padding: 9px 8px;
+    margin: 8px 14px 12px 14px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #16202c, #0c131b);
+    border: 1px solid rgba(47, 124, 255, .18);
+    box-shadow: 0 8px 24px rgba(0,0,0,.45), 0 0 18px rgba(47,124,255,.07), inset 0 1px 0 rgba(255,255,255,.04);
 }
 
 .stat{
     display:flex;
     align-items:center;
     gap:8px;
-
-    font-size:14px;
+    font-size:12px;
     font-weight:700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing:.2px;
 }
 
 .light{
-    opacity:.7;
+    opacity:.55;
     font-weight:500;
-    font-size: 12px;
+    font-size: 11px;
+    letter-spacing:0;
 }
 
 .red-dot{
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #ff4b4b;
-    box-shadow: 0 0 8px #ff4b4b;
-    animation: pulse 1.2s infinite;
+    background: #00d68f;
+    box-shadow: 0 0 10px #00d68f;
+    animation: pulse 1.6s infinite;
 }
 
 .green{
-    color:#2cff73;
+    color:#00d68f;
+    text-shadow: 0 0 12px rgba(0,214,143,.35);
 }
 
 @keyframes pulse{
-
-    0%{
-        transform:scale(1);
-        opacity:1;
-    }
-
-    50%{
-        transform:scale(1.45);
-        opacity:.45;
-    }
-
-    100%{
-        transform:scale(1);
-        opacity:1;
-    }
-
+    0%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(1.45); opacity:.4; }
+    100%{ transform:scale(1); opacity:1; }
 }
 
-/* Разделитель между статистиками */
 .divider {
     width: 1px;
     height: 20px !important;
-    background: linear-gradient(180deg, transparent, rgba(255, 215, 128, .36), transparent);
+    background: linear-gradient(180deg, transparent, rgba(47,124,255,.45), transparent);
 }
 
 /* TICKER */
@@ -121,97 +111,96 @@ body{
 .ticker{
     overflow:hidden;
     margin-bottom:10px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
 .ticker-track{
     display:flex;
     gap:8px;
     width:max-content;
-
     animation:ticker 45s linear infinite;
 }
 
 .win-box{
-
-  min-width: 140px;
+    min-width: 140px;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 12px;
-    border-radius: 22px;
-    background: linear-gradient(180deg, #281d11, #120d08);
-    border: 1px solid rgba(255, 179, 0, .12);
+    padding: 7px 12px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #151e29, #0b1118);
+    border: 1px solid rgba(47,124,255,.13);
     font-size: 12px;
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color:#c8d4e0;
 }
 
 .green-dot{
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #2cff73;
-    box-shadow: 0 0 8px #2cff73;
+    background: #00d68f;
+    box-shadow: 0 0 8px #00d68f;
+    flex-shrink:0;
 }
 
 @keyframes ticker{
-
-    from{
-        transform:translateX(0);
-    }
-
-    to{
-        transform:translateX(-50%);
-    }
-
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
 }
 
 /* PROMO */
 
 .promo{
-
-   display: flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0px;
     padding: 8px 10px;
     margin: 0px 14px;
-    border-radius: 26px;
-    background: radial-gradient(circle at center, #013c14 0%, #001307 100%);
-    border: 2px solid rgba(0, 255, 106, .24);
-    box-shadow: 0 0 30px rgba(0, 255, 94, .12), inset 0 0 30px rgba(0, 255, 94, .05);
+    border-radius: 20px;
+    background:
+        linear-gradient(180deg, rgba(47,124,255,.12), rgba(0,0,0,0)),
+        linear-gradient(180deg, #101a26, #0a1017);
+    border: 1.5px solid rgba(47, 124, 255, .30);
+    box-shadow: 0 0 26px rgba(47,124,255,.12), inset 0 1px 0 rgba(255,255,255,.05);
     margin-bottom: 14px;
 }
 
 .promo-left{
     display:flex;
     align-items:center;
-    
 }
 
 .gift{
-
-   width: 40px;
+    width: 40px;
     height: 40px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, .08);
+    border-radius: 14px;
+    background: rgba(47,124,255,.14);
+    border: 1px solid rgba(47,124,255,.22);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    margin-right: 6px
+    font-size: 22px;
+    margin-right: 8px;
 }
 
 .promo-title{
-   font-size: 11px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 1px;
+    color:#9db0c5;
 }
 
 .promo-bonus{
-   font-size: 20px;
-    line-height: 1;
+    font-size: 16px;
+    line-height: 1.1;
     font-weight: 700;
-    color: #22ff73;
+    color: #00d68f;
+    text-shadow: 0 0 16px rgba(0,214,143,.35);
+    font-variant-numeric: tabular-nums;
 }
 
 .promo-right{
@@ -221,34 +210,41 @@ body{
 }
 
 .info{
-   width: 24px;
+    width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #f3d38c;
-    color: #000;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.16);
+    color: #cdd9e5;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     cursor: pointer;
+    font-style: italic;
 }
 
 .copy-promo-btn{
-
-    min-width: 80px;
+    min-width: 96px;
     height: 36px;
-    border-radius: 18px;
-    background: linear-gradient(180deg, #1df36d, #30d56e);
+    border-radius: 12px;
+    background: linear-gradient(180deg, #00e69b, #00b578);
     border: none;
-    color: #000;
-    font-size: 14px;
-    font-weight: 700;
+    color: #04120c;
+    font-size: 13px;
+    font-weight: 800;
     cursor: pointer;
-    padding: 0 14px;
+    padding: 0 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,214,143,.28);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.copy-promo-btn:active{
+    transform: scale(.96);
 }
 
 /* GAMES */
@@ -259,67 +255,63 @@ body{
     gap:14px;
     margin: 14px;
     margin-bottom: 80px;
-
 }
 
 .card{
-
     position:relative;
-
     padding:14px;
+    border-radius:20px;
+    background: linear-gradient(180deg, #18222e 0%, #0d141c 100%);
+    border:1px solid rgba(47,124,255,.14);
+    box-shadow: 0 10px 26px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
 
-    border-radius:28px;
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:20px;
+    pointer-events:none;
+    opacity:.5;
+    background-image:
+        repeating-linear-gradient(90deg, rgba(47,124,255,.045) 0 1px, transparent 1px 22px),
+        repeating-linear-gradient(0deg, rgba(47,124,255,.045) 0 1px, transparent 1px 22px);
+    -webkit-mask-image: linear-gradient(180deg, #000, transparent 55%);
+            mask-image: linear-gradient(180deg, #000, transparent 55%);
+}
 
-    background:
-    linear-gradient(180deg, #533721d9, #281306b3);
-
-    border:1px solid rgba(255,183,0,.18);
-
-    box-shadow:
-    0 0 20px rgba(255,162,0,.10),
-    inset 0 0 24px rgba(255,162,0,.04);
+.card:active{
+    transform: scale(.98);
+    border-color: rgba(47,124,255,.30);
 }
 
 .badge{
-
-   position: absolute;
+    position: absolute;
     top: 7px;
     right: 7px;
-    padding: 4px 6px;
-    border-radius: 16px;
+    padding: 4px 7px;
+    border-radius: 8px;
     font-size: 9px;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing:.5px;
+    z-index:2;
 }
 
-.hot{
-    background:#ffd84d;
-    color:#000;
-    box-shadow: 0 0 10px #ffd84d78;
-}
-
-.new{
-    background:#4be4ff;
-    color:#000;
-    box-shadow: 0 0 10px #3eeaff91;
-}
-
-.vip{
-    background:#ffe36d;
-    color:#000;
-    box-shadow: 0 0 10px #ffe36d94;
-}
-
-.top{
-    background:#ff4b4b;
-    box-shadow: 0 0 10px #ff4b4b85;
-}
+.hot{ background:#f0b90b; color:#0a0e14; box-shadow: 0 0 12px rgba(240,185,11,.45); }
+.new{ background:#2f7cff; color:#fff; box-shadow: 0 0 12px rgba(47,124,255,.55); }
+.vip{ background:#8b5cf6; color:#fff; box-shadow: 0 0 12px rgba(139,92,246,.55); }
+.top{ background:#f6465d; color:#fff; box-shadow: 0 0 12px rgba(246,70,93,.55); }
 
 .game-image{
     width:100%;
     aspect-ratio:1/1;
-    border-radius:18px;
+    border-radius:14px;
     overflow:hidden;
     margin-bottom:12px;
+    position:relative;
+    background:#0a0f15;
+    border:1px solid rgba(255,255,255,.05);
 }
 
 .game-image img{
@@ -334,28 +326,29 @@ body{
     font-weight: 700;
     letter-spacing: 0.7px;
     margin-bottom: 12px;
-    color: #fff6dd;
+    color: #d3dfeb;
+    position:relative;
+    z-index:1;
 }
 
 .play-btn{
-
     width: 100%;
     height: 36px;
     border: none;
     outline: none;
-    border-radius: 18px;
-    background: linear-gradient(180deg, #ffe18c, #f0ae38);
-    color: #000;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #00e69b, #00b578);
+    color: #04120c;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing:.4px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    /* Анимация пульсации (дыхание) */
-    animation: playPulse 2.5s infinite ease-in-out;
+    box-shadow: 0 4px 16px rgba(0,214,143,.25);
+    animation: playPulse 2.8s infinite ease-in-out;
 }
 
-/* Анимация блика для кнопок PLAY */
 .play-btn::after {
     content: '';
     position: absolute;
@@ -363,8 +356,8 @@ body{
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    animation: shine 3s infinite;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    animation: shine 3.4s infinite;
 }
 
 @keyframes shine {
@@ -374,61 +367,11 @@ body{
 
 @keyframes playPulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
+    50% { transform: scale(1.035); }
     100% { transform: scale(1); }
 }
 
-/* JACKPOT */
-
-.jackpot{
-
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -200px;
-    width: 92%;
-    max-width: 450px;
-    padding: 8px 8px;
-    border-radius: 28px;
-    background: linear-gradient(90deg, #45141c, #2c160b);
-    border: 2px solid rgba(255, 90, 115, .45);
-    box-shadow: 0 0 35px rgba(255, 90, 115, .18);
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: .55s;
-    z-index: 9999;
-    opacity: 97%;
-}
-
-.jackpot.show{
-    bottom:18px;
-}
-
-.flag{
-
-        width: 40px;
-    height: 40px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, .08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-.jackpot small{
-    font-size:12px;
-    opacity:.85;
-}
-
-.jackpot h2{
-    margin-top: 0px;
-    font-size: 16px;
-    color: #ff7187;
-}
-
-/* Верхняя панель с промокодом (слайд сверху) */
+/* Верхняя панель с промокодом */
 .top-notification{
     position: fixed;
     top: 0;
@@ -447,29 +390,31 @@ body{
 }
 
 .notification-inner{
-    border-radius: 34px;
+    border-radius: 22px;
     padding: 16px 14px;
-    background: radial-gradient(circle at top, #29170d 0%, #080402 100%);
-    border: 2px solid rgba(255,196,0,.18);
-    box-shadow: 0 0 40px rgba(255,170,0,.12), inset 0 0 30px rgba(255,170,0,.05);
+    background:
+        radial-gradient(circle at top, rgba(47,124,255,.16) 0%, rgba(0,0,0,0) 65%),
+        linear-gradient(180deg, #131d28 0%, #080c11 100%);
+    border: 1.5px solid rgba(47,124,255,.28);
+    box-shadow: 0 20px 50px rgba(0,0,0,.6), 0 0 40px rgba(47,124,255,.12), inset 0 1px 0 rgba(255,255,255,.05);
     position: relative;
     opacity: 98%;
 }
 
 .notif-close{
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 10px;
+    right: 10px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, .2);
-    background: rgba(255, 255, 255, .06);
-    color: #fff;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.05);
+    color: #cdd9e5;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 38px;
+    font-size: 34px;
     cursor: pointer;
     line-height: 1;
 }
@@ -480,36 +425,38 @@ body{
 }
 
 .notif-gift{
-   width: 72px;
+    width: 72px;
     height: 56px;
     min-width: 56px;
-    border-radius: 22px;
-    background: rgba(255, 255, 255, .08);
+    border-radius: 16px;
+    background: rgba(47,124,255,.14);
+    border: 1px solid rgba(47,124,255,.22);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .notif-title{
     font-size: 18px;
     font-weight: 800;
     margin-bottom: 8px;
+    color:#f1f6fb;
 }
 
 .notif-text{
     font-size: 14px;
-    line-height: 1.2;
-    opacity: .92;
+    line-height: 1.25;
+    opacity: .78;
+    color:#c8d4e0;
 }
 
 .promo-copy{
-
     margin-top: 16px;
-    border-radius: 20px;
-    padding: 12px 18px;
-    background: radial-gradient(circle at center, #013d15 0%, #001307 100%);
-    border: 2px solid rgba(0, 255, 98, .22);
+    border-radius: 14px;
+    padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(0,214,143,.10), rgba(0,0,0,0)), #0b1118;
+    border: 1.5px solid rgba(0,214,143,.28);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -519,50 +466,46 @@ body{
 .copy-left small{
     display: block;
     font-size: 10px;
-    letter-spacing: 0px;
-    opacity: .75;
-    margin-bottom: 0px;
+    letter-spacing: 1px;
+    opacity: .6;
+    margin-bottom: 2px;
 }
 
 .copy-left h2{
-    color: #22ff73;
+    color: #00d68f;
     font-size: 20px;
-    letter-spacing: 0px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 14px rgba(0,214,143,.35);
 }
 
 .copy-btn{
-
     border: none;
     min-width: 106px;
     height: 38px;
-    border-radius: 22px;
-    background: #1df36d;
-    color: #000;
-    font-size: 16px;
-    font-weight: 700;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #00e69b, #00b578);
+    color: #04120c;
+    font-size: 15px;
+    font-weight: 800;
     cursor: pointer;
-    animation: pulseBtn 2s infinite;
+    box-shadow: 0 4px 16px rgba(0,214,143,.3);
+    animation: pulseBtn 2.2s infinite;
 }
 
 @keyframes pulseBtn {
     0% { transform: scale(1); }
-    50% { transform: scale(1.06); }
+    50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
-/* Стили для карточки телеграм-канала */
-.card-wide {
-    grid-column: span 2;
-}
-
-.card-wide .game-image {
-    aspect-ratio: 2 / 1;
-}
+/* Карточка Telegram */
+.card-wide { grid-column: span 2; }
+.card-wide .game-image { aspect-ratio: 2 / 1; }
 
 .badge-tg {
-    background: #1da1f2;
+    background: #2f7cff;
     color: #fff;
-    box-shadow: 0 0 10px #1da1f280;
+    box-shadow: 0 0 12px rgba(47,124,255,.55);
     display: flex;
     align-items: center;
     gap: 3px;
@@ -587,8 +530,8 @@ body{
             <div class="red-dot"></div>
 
             <div>
-                <span id="online">3114</span>
-                <span class="light"> playing now</span>
+                <span id="online">340</span>
+                <span class="light"> трейдеров онлайн</span>
             </div>
 
         </div>
@@ -597,11 +540,9 @@ body{
 
         <div class="stat">
 
-            <span class="green">
-                +<span id="wins">128</span>
-            </span>
+            <span class="green" id="deals">2650</span>
 
-            <span class="light"> won last hour</span>
+            <span class="light"> сделок сегодня</span>
 
         </div>
 
@@ -624,11 +565,11 @@ body{
             <div>
 
                 <div class="promo-title">
-                    promo: VORUEM
+                    промокод: SESSION
                 </div>
 
                 <div class="promo-bonus">
-                    +500% & 500FS
+                    +60% на счёт
                 </div>
 
             </div>
@@ -642,163 +583,73 @@ body{
             </div>
 
             <button class="copy-promo-btn" id="promoCopyBtn">
-                Copy
+                Копировать
             </button>
 
         </div>
 
     </div>
 
-    <!-- GAMES -->
-    
-    
+    <!-- CARDS -->
 
     <div class="games">
-        
-        <div class="card">
 
-          <div class="badge new">NEW</div>
-
-            <div class="game-image">
-                 <img src="game-5.gif">
-            </div>
-
-            <div class="game-title">
-                DOODLE CRASH
-            </div>
-
-             <button
-            class="play-btn"
-            onclick="window.location.href='https://one-vv5730.com/casino/list?open=register&p=i294'">
-                ▶ PLAY
-            </button>
-
-        </div>
-
-        
-
-
-        <div class="card">
-
-            <div class="badge vip">VIP</div>
-
-            <div class="game-image">
-                <img src="game-3.gif">
-            </div>
-
-            <div class="game-title">
-                TAPPY BIRD
-            </div>
-
-            <button
-            class="play-btn"
-            onclick="window.location.href='https://one-vv5730.com/casino/list?open=register&p=i294'">
-                ▶ PLAY
-            </button>
-
-        </div>
-        
-        
-        <div class="card">
-
-            <div class="badge hot">TOP</div>
-
-           <div class="game-image">
-    <img src="game-1.gif">
-</div>
-
-            <div class="game-title">
-                TOWER RUSH
-            </div>
-
-            <button
-            class="play-btn"
-            onclick="window.location.href='https://one-vv5730.com/casino/list?open=register&p=i294'">
-                ▶ PLAY
-            </button>
-
-        </div>
-        
-
-        <div class="card">
-
-            <div class="badge top">HOT</div>
-
-            <div class="game-image">
-                 <img src="game-4.gif">
-            </div>
-
-            <div class="game-title">
-                ONLY MATCH
-            </div>
-
-             <button
-            class="play-btn"
-            onclick="window.location.href='https://one-vv5730.com/casino/list?open=register&p=i294'">
-                ▶ PLAY
-            </button>
-
-        </div>
-
-        
-              <div class="card">
-
-            <div class="badge new">NEW</div>
-
-            <div class="game-image">
-                <img src="game-2.gif">
-            </div>
-
-            <div class="game-title">
-                PUNCH IT
-            </div>
-
-            <button
-            class="play-btn"
-            onclick="window.location.href='https://one-vv5730.com/casino/list?open=register&p=i294'">
-                ▶ PLAY
-            </button>
-
-        </div>
-        
-        
-       
-        
-        
-        
-        
-        
-         <div class="card">
-
-           <div class="badge hot">TOP</div>
-
-            <div class="game-image">
-                 <img src="game-6.gif">
-            </div>
-
-            <div class="game-title">
-                AVIAMASTERS
-            </div>
-
-             <button
-            class="play-btn"
-            onclick="window.location.href='https://one-vv5730.com/casino/list?open=register&p=i294'">
-                ▶ PLAY
-            </button>
-
-        </div>
-        
-        <!-- ▶ Новая карточка Telegram 
         <div class="card card-wide">
 
-            <div class="badge badge-tg">BONUS</div>
+            <div class="badge badge-tg">СИГНАЛЫ</div>
 
             <div class="game-image">
                 <img src="tg.png" alt="Telegram">
             </div>
 
             <div class="game-title">
-                TELEGRAM CHANNEL
+                ТОРГОВЫЙ БОТ ДЛЯ СЕССИЙ
+            </div>
+
+            <button
+            class="play-btn"
+            onclick="window.location.href='https://t.me/your_channel'">
+                ЗАБРАТЬ БОТА
+            </button>
+
+        </div>
+
+        
+        
+        
+        <div class="card card-wide">
+
+            <div class="badge badge-tg">СИГНАЛЫ</div>
+
+            <div class="game-image">
+                <img src="tg.png" alt="Telegram">
+            </div>
+
+            <div class="game-title">
+                ТОРГУЕМ ТУТ
+            </div>
+
+            <button
+            class="play-btn"
+            onclick="window.location.href='https://t.me/your_channel'">
+                ЗАРЕГЕСТРИРОВАТЬСЯ
+            </button>
+
+        </div>
+
+        
+        
+        
+        <div class="card card-wide">
+
+            <div class="badge badge-tg">СИГНАЛЫ</div>
+
+            <div class="game-image">
+                <img src="tg.png" alt="Telegram">
+            </div>
+
+            <div class="game-title">
+                TELEGRAM КАНАЛ
             </div>
 
             <button
@@ -807,35 +658,13 @@ body{
                 ПОДПИСАТЬСЯ
             </button>
 
-        </div> -->
+        </div>
 
     </div>
 
 </div>
 
-<!-- JACKPOT -->
-
-<div class="jackpot" id="jackpot">
-
-    <div class="flag" id="flag">
-        🇫🇷
-    </div>
-
-    <div>
-
-        <small id="jackpotId">
-            ID: 428***
-        </small>
-
-        <h2 id="jackpotText">
-            JACKPOT +$7,103
-        </h2>
-
-    </div>
-
-</div>
-
-<!-- Верхняя панель с промокодом (появляется по клику на "i") -->
+<!-- Верхняя панель с промокодом (только по клику на "i") -->
 
 <div class="top-notification" id="topNotification">
 
@@ -858,7 +687,7 @@ body{
                 </div>
 
                 <div class="notif-text">
-                    Зарегистрируйтесь сейчас и получите бонус 500% и 500FS, используя этот промокод.
+                    Получите бонус 60% на первое пополнение, используя этот промокод.
                 </div>
 
             </div>
@@ -869,16 +698,16 @@ body{
 
             <div class="copy-left">
 
-                <small>PROMOCODE</small>
+                <small>ПРОМОКОД</small>
 
                 <h2 id="topPromoCode">
-                    VORUEM
+                    SESSION
                 </h2>
 
             </div>
 
             <button class="copy-btn" id="topCopyBtn">
-                Copy
+                Копировать
             </button>
 
         </div>
@@ -889,219 +718,97 @@ body{
 
 <script>
 
-/* ONLINE */
+/* ТРЕЙДЕРЫ ОНЛАЙН — от 310 до 375 */
+const ONLINE_MIN = 310;
+const ONLINE_MAX = 375;
 
-let online = 3114;
+let online = Math.floor(Math.random() * (ONLINE_MAX - ONLINE_MIN + 1)) + ONLINE_MIN;
+document.getElementById('online').innerText = online;
 
-setInterval(()=>{
-
-    online += Math.floor(Math.random()*11)-5;
-
-    if(online < 2800) online = 2800;
-    if(online > 3400) online = 3400;
-
+setInterval(() => {
+    online += Math.floor(Math.random() * 7) - 3; // -3 ... +3
+    if (online < ONLINE_MIN) online = ONLINE_MIN;
+    if (online > ONLINE_MAX) online = ONLINE_MAX;
     document.getElementById('online').innerText = online;
+}, 2500);
 
-},2500);
+/* СДЕЛОК СЕГОДНЯ — старт 2578–2749, +1 каждые 2–3 секунды */
+const DEALS_MIN = 2578;
+const DEALS_MAX = 2749;
 
-/* WINS — теперь начинается со случайного числа 122–137 и увеличивается на 1 каждые 2–5 секунд */
+let deals = Math.floor(Math.random() * (DEALS_MAX - DEALS_MIN + 1)) + DEALS_MIN;
+document.getElementById('deals').innerText = deals;
 
-let wins = Math.floor(Math.random() * (137 - 122 + 1)) + 122;
-document.getElementById('wins').innerText = wins;
-
-function scheduleWinsUpdate() {
-    const delay = Math.floor(Math.random() * 3000) + 2000; // 2000–5000 мс
+function scheduleDealsUpdate() {
+    const delay = Math.floor(Math.random() * 1000) + 2000; // 2000–3000 мс
     setTimeout(() => {
-        wins += 1;
-        document.getElementById('wins').innerText = wins;
-        scheduleWinsUpdate(); // планируем следующий шаг
+        deals += 1;
+        document.getElementById('deals').innerText = deals;
+        scheduleDealsUpdate();
     }, delay);
 }
-scheduleWinsUpdate();
+scheduleDealsUpdate();
 
-/* TICKER — выигрыши от 151 до 793 */
+/* TICKER — выплаты от 151 до 793 */
 
 const ticker = document.getElementById('ticker');
 
 function tickerItem(){
-
-    const id =
-    Math.floor(Math.random()*900)+100;
-
-    const amount =
-    Math.floor(Math.random() * (793 - 151 + 1)) + 151;
+    const id = Math.floor(Math.random()*900)+100;
+    const amount = Math.floor(Math.random() * (793 - 151 + 1)) + 151;
 
     return `
     <div class="win-box">
-
         <div class="green-dot"></div>
-
-        <div>
-            ID: ${id}***
-        </div>
-
-        <div class="green">
-            +$${amount}
-        </div>
-
+        <div>ID: ${id}***</div>
+        <div class="green">+$${amount}</div>
     </div>
     `;
 }
 
 let tickerHtml = '';
-
 for(let i=0;i<20;i++){
     tickerHtml += tickerItem();
 }
-
 ticker.innerHTML = tickerHtml + tickerHtml;
 
-/* JACKPOT */
-
-const jackpot = document.getElementById('jackpot');
-
-const flags = [
-'🇷🇺',
-'🇮🇳',
-'🇺🇿',
-'🇺🇦',
-'🇰🇬',
-'🇹🇯',
-'🇦🇿',
-'🇦🇲',
-'🇲🇩',
-'🇧🇾',
-'🇹🇷',
-'🇲🇽',
-'🇨🇱',
-'🇦🇷',
-'🇻🇪',
-'🇨🇴',
-'🇪🇨',
-'🇨🇷',
-'🇧🇷',
-'🇮🇩',
-'🇧🇩',
-'🇹🇭',
-'🇰🇭',
-'🇱🇰',
-'🇵🇰',
-'🇲🇾',
-'🇵🇭',
-'🇰🇷',
-'🇯🇵',
-'🇨🇦',
-'🇻🇳',
-'🇶🇦',
-'🇦🇪',
-'🇧🇴',
-'🇬🇹',
-'🇳🇪',
-'🇬🇲',
-'🇹🇳',
-'🇪🇹',
-'🇪🇸'
-];
-
-function showJackpot(){
-
-    const id =
-    Math.floor(Math.random()*900)+100;
-
-    const amount =
-    (
-        Math.floor(Math.random()*9000)+500
-    ).toLocaleString();
-
-    const flag =
-    flags[
-        Math.floor(Math.random()*flags.length)
-    ];
-
-    document.getElementById('flag').innerText =
-    flag;
-
-    document.getElementById('jackpotId').innerText =
-    `ID: ${id}***`;
-
-    document.getElementById('jackpotText').innerText =
-    `JACKPOT +$${amount}`;
-
-    jackpot.classList.add('show');
-
-    // Автоматически скрываем через 5 секунд
-    setTimeout(()=>{
-        jackpot.classList.remove('show');
-    },5000);
-
-}
-
-let jackpotTimer = null;
-
-function scheduleNextJackpot() {
-    // Очищаем предыдущий таймер на всякий случай
-    if (jackpotTimer) clearTimeout(jackpotTimer);
-    
-    // Случайный интервал от 11 до 17 секунд
-    const next = Math.floor(Math.random() * 6000) + 11000;
-    
-    jackpotTimer = setTimeout(() => {
-        showJackpot();
-        // После показа планируем следующий
-        scheduleNextJackpot();
-    }, next);
-}
-
-// Запускаем первый джекпот через 11–17 секунд после загрузки
-scheduleNextJackpot();
-
-/* ВЕРХНЯЯ ПАНЕЛЬ С ПРОМОКОДОМ (слайд сверху) */
+/* ВЕРХНЯЯ ПАНЕЛЬ С ПРОМОКОДОМ — только по клику на "i" */
 
 const topNotification = document.getElementById('topNotification');
-const promoCode = 'VORUEM';
+const promoCode = 'SESSION';
 
 function showNotification() {
-    // Не показываем повторно, если уже открыто
     if (topNotification.classList.contains('show')) return;
     topNotification.classList.add('show');
-    // автоскрытие убрано — теперь окно остаётся, пока не закроют крестиком
 }
 
 function hideNotification() {
     topNotification.classList.remove('show');
 }
 
-// Открытие по клику на "i"
 document.getElementById('openNotification').addEventListener('click', showNotification);
-// Закрытие по крестику
 document.getElementById('closeNotification').addEventListener('click', hideNotification);
 
-// Автоматический показ через 5 секунды после загрузки
-setTimeout(showNotification, 7000);
-
-// Копирование из кнопки в promo-right (рядом с i)
 document.getElementById('promoCopyBtn').addEventListener('click', async function() {
     try {
         await navigator.clipboard.writeText(promoCode);
         const btn = this;
-        btn.textContent = 'Copied';
+        btn.textContent = 'Скопировано';
         setTimeout(() => {
-            btn.textContent = 'Copy';
+            btn.textContent = 'Копировать';
         }, 1500);
     } catch (err) {
-        // fallback
         alert('Скопируйте вручную: ' + promoCode);
     }
 });
 
-// Копирование из верхней панели
 document.getElementById('topCopyBtn').addEventListener('click', async function() {
     try {
         await navigator.clipboard.writeText(promoCode);
         const btn = this;
-        btn.textContent = 'Copied';
+        btn.textContent = 'Скопировано';
         setTimeout(() => {
-            btn.textContent = 'Copy';
+            btn.textContent = 'Копировать';
         }, 1500);
     } catch (err) {
         alert('Скопируйте вручную: ' + promoCode);
