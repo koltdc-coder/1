@@ -622,7 +622,7 @@ body{
             <div class="badge badge-tg">ТОРГУЕМ ТУТ</div>
 
             <div class="game-image">
-                <img src="tg.png" alt="Telegram">
+                <img src="pocket.png" alt="Telegram">
             </div>
 
             <div class="game-title">
@@ -687,7 +687,7 @@ body{
                 </div>
 
                 <div class="notif-text">
-                    Получите бонус 60% на первое пополнение, используя этот промокод.
+                    Получите бонус 60% на первое пополнение, используя этот промокод при регистрации.
                 </div>
 
             </div>
@@ -749,13 +749,38 @@ function scheduleDealsUpdate() {
 }
 scheduleDealsUpdate();
 
-/* TICKER — выплаты от 151 до 793 */
+/* TICKER — выигрыши от 49 до 111, каждый 7–9 показ проигрыш */
 
 const ticker = document.getElementById('ticker');
 
+const LOSS_AMOUNTS = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+
+let tickerCounter = 0;
+let lossAt = Math.floor(Math.random() * 3) + 7; // 7, 8 или 9
+
 function tickerItem(){
     const id = Math.floor(Math.random()*900)+100;
-    const amount = Math.floor(Math.random() * (793 - 151 + 1)) + 151;
+
+    tickerCounter++;
+
+    /* ПРОИГРЫШ */
+    if (tickerCounter >= lossAt) {
+        tickerCounter = 0;
+        lossAt = Math.floor(Math.random() * 3) + 7; // 7, 8 или 9
+
+        const loss = LOSS_AMOUNTS[Math.floor(Math.random() * LOSS_AMOUNTS.length)];
+
+        return `
+        <div class="win-box">
+            <div class="green-dot" style="background:#f6465d; box-shadow:0 0 8px #f6465d;"></div>
+            <div>ID: ${id}***</div>
+            <div class="green" style="color:#f6465d; text-shadow:0 0 12px rgba(246,70,93,.35);">-$${loss}</div>
+        </div>
+        `;
+    }
+
+    /* ВЫИГРЫШ */
+    const amount = Math.floor(Math.random() * (111 - 49 + 1)) + 49;
 
     return `
     <div class="win-box">
